@@ -2,7 +2,7 @@ package modelos;
 
 import utilities.Localizacao;
 
-public class UnidadeMonitoramento {
+public abstract class UnidadeMonitoramento {
 	
 	private Integer id;
 	private boolean cameraVideo;
@@ -22,6 +22,10 @@ public class UnidadeMonitoramento {
 		this.medidorCO2 = medidorCO2;
 		this.medidorMetano = medidorMetano;
 		this.localizacao = localizacao;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public boolean isCameraVideo() {
@@ -96,8 +100,15 @@ public class UnidadeMonitoramento {
 			return false;
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "UnidadeMonitoramento [id=" + id + ", cameraVideo=" + cameraVideo + ", termometro=" + termometro
+				+ ", medidorCO2=" + medidorCO2 + ", medidorMetano=" + medidorMetano + ", localizacao=" + localizacao
+				+ "]";
+	}
 	
-	
+	public abstract Double calcularDistancia(Localizacao destino);
 	
 	
 

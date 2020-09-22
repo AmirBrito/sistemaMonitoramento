@@ -3,6 +3,8 @@ package modelos;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class AreaMonitorada {
 
 	private Integer id;
@@ -13,6 +15,14 @@ public class AreaMonitorada {
 		this.id = id;
 		this.name = name;
 	}
+
+	public List<UnidadeMonitoramento> getUnidades() {
+		return unidades;
+	}
+
+	public void setUnidades(List<UnidadeMonitoramento> unidades) {
+		this.unidades = unidades;
+	}	
 
 	public int getId() {
 		return id;
@@ -30,14 +40,6 @@ public class AreaMonitorada {
 		this.name = name;
 	}
 
-	public List<UnidadeMonitoramento> getUnidades() {
-		return unidades;
-	}
-
-	public void setUnidades(List<UnidadeMonitoramento> unidades) {
-		this.unidades = unidades;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -49,7 +51,7 @@ public class AreaMonitorada {
 
 	@Override
 	public String toString() {
-		return "areaMonitorada [id=" + id + ", name=" + name + "]";
+		return "areaMonitorada ID = " + id + " name = " + name;
 	}
 
 }

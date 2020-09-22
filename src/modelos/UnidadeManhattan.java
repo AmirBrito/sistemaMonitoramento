@@ -3,7 +3,13 @@ package modelos;
 import utilities.Localizacao;
 
 public class UnidadeManhattan extends UnidadeMonitoramento {
-
+	
+	public UnidadeManhattan(Integer id, boolean cameraVideo, boolean termometro, boolean medidorCO2,
+			boolean medidorMetano, Localizacao localizacao) {
+		super(id, cameraVideo, termometro, medidorCO2, medidorMetano, localizacao);
+	}
+	
+	@Override
 	public Double calcularDistancia(Localizacao destino) {
 
 		double latitude;
