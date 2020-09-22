@@ -31,12 +31,15 @@ public class Application {
 		List<UnidadeMonitoramento> unidades = new ArrayList<>();
 		
 		Localizacao padrao = new Localizacao(0,0);
-		
+		Localizacao novoLocal = new Localizacao(70,35);
+		Localizacao novoLocal2 = new Localizacao(33,90);
+		Localizacao novoLocal3 = new Localizacao(14,25);
 		
 		unidades.add(new UnidadeEuclidiana(1, true, true, true, true, padrao));
-		unidades.add(new UnidadeEuclidiana(2, false, false, false, false, padrao));
-		unidades.add(new UnidadeManhattan(3, false, true, false, true, padrao));
-		unidades.add(new UnidadeManhattan(4, true, false, true, false, padrao));			
+		unidades.add(new UnidadeEuclidiana(2, true, true, true, true, novoLocal));
+		unidades.add(new UnidadeManhattan(3, true, true, true, true, novoLocal2));
+		unidades.add(new UnidadeManhattan(4, true, true, true, true, novoLocal3));			
+		
 		
 							
 		for (UnidadeMonitoramento id : unidades) { 
@@ -53,14 +56,21 @@ public class Application {
 			}
 		}
 		
-		System.out.println(unidadeHabilitada.isEmpty());
 		
+		// calculando distancia
 		Localizacao destino = new Localizacao(10,20);
 		
-		System.out.println(unidadeHabilitada.get(0).calcularDistancia(destino));
+		for(int i=0; i<unidadeHabilitada.size(); i++) {
+			System.out.println(unidadeHabilitada.get(i).calcularDistancia(destino));
+			
+		}
 		
+		// selecionar unidade
 		
+		Localizacao destinoFinal = new Localizacao(15,15);
 		
+		unidadeHabilitada.get(3).monitorar(destinoFinal, true, true, true, true);
+		System.out.println(unidadeHabilitada.get(3));
 		sc.close();
 
 	}

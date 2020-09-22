@@ -108,6 +108,11 @@ public abstract class UnidadeMonitoramento {
 				+ "]";
 	}
 	
+	public String monitorar(Localizacao posicao, boolean cameraVideo, boolean termometro, boolean medidorCO2, boolean medidorMetano) {
+		this.localizacao = posicao;
+		return "Dados:" + localizacao + cameraVideo + termometro + medidorCO2 + medidorMetano; 
+	}
+	
 	public abstract Double calcularDistancia(Localizacao destino);
 	
 	

@@ -3,6 +3,8 @@ package modelos;
 import java.util.ArrayList;
 import java.util.List;
 
+import utilities.Localizacao;
+
 
 
 public class AreaMonitorada {
@@ -53,5 +55,5 @@ public class AreaMonitorada {
 	public String toString() {
 		return "areaMonitorada ID = " + id + " name = " + name;
 	}
-
+	
 }
