@@ -1,6 +1,6 @@
-package modelos;
+package sistemaMonitoramento.LOGICA;
 
-import utilities.Localizacao;
+import sistemaMonitoramento.UTILITIES.Localizacao;
 
 public class UnidadeManhattan extends UnidadeMonitoramento {
 	

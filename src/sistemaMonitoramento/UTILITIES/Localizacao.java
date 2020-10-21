@@ -1,4 +1,4 @@
-package utilities;
+package sistemaMonitoramento.UTILITIES;
 
 public class Localizacao {
 	
@@ -26,6 +26,11 @@ public class Localizacao {
 	@Override
 	public String toString() {
 		return "[longitude=" + longitude + ", latitude=" + latitude + "]";
+	}
+	
+	public void addLocalizacao(Integer longitude, Integer Latitude) {
+			this.setLatitude(Latitude);
+			this.setLongitude(longitude);		
 	}
 	
 	
