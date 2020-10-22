@@ -53,32 +53,37 @@ public class AreaMonitorada {
 		return "areaMonitorada ID = " + id + " name = " + name;
 	}
 
-	public void validarUnidades(Localizacao destinoFinal, boolean cameraVideo, boolean termometro, boolean medidorCO2,
+	public String monitorar(int latitude, int longitude, boolean cameraVideo, boolean termometro, boolean medidorCO2,
 			boolean medidorMetano) throws Exception {
+                Localizacao destinoFinal = new Localizacao(latitude, longitude);
 		List<UnidadeMonitoramento> listaAuxiliar = new ArrayList<UnidadeMonitoramento>();
 		for (UnidadeMonitoramento id : this.unidade.getUnidades()) {
 			if (id.hasConfigMin(cameraVideo, termometro, medidorCO2, medidorMetano)) {
 				listaAuxiliar.add(id);
 			}
 		}
-		unidadeProxima(listaAuxiliar, destinoFinal);
+		return unidadeProxima(listaAuxiliar, destinoFinal);
+                
 	}
 
-	public void unidadeProxima(List<UnidadeMonitoramento> listaAuxiliar, Localizacao destinoFinal) throws Exception {
+	public String unidadeProxima(List<UnidadeMonitoramento> listaAuxiliar, Localizacao destinoFinal) throws Exception {
 
 		Collections.sort(listaAuxiliar, new OrdenarUnidades(destinoFinal, listaAuxiliar.get(0)));
-		this.unidade.monitorar(destinoFinal, listaAuxiliar.get(0));
+		this.unidade.atualizarPosicao(destinoFinal, listaAuxiliar.get(0));
+                listaAuxiliar.get(0).setLocalizacao(destinoFinal);
+                return "unidade movida" + listaAuxiliar.get(0).getId() + listaAuxiliar.get(0).getLocalizacao();
+                
 	}
 	
 	public void addUnidadeEuclidiana(Integer id, boolean cameraVideo, boolean termometro, boolean medidorCO2,
-			boolean medidorMetano, Localizacao localizacao) throws Exception {
-			this.unidade.addUnidadeEuclidiana(id, cameraVideo, termometro, medidorCO2, medidorMetano, localizacao);
+			boolean medidorMetano, int latitude, int longitude) throws Exception {
+			this.unidade.addUnidadeEuclidiana(id, cameraVideo, termometro, medidorCO2, medidorMetano, latitude, longitude);
 
 	}
 	
 	public void addUnidadeManhattan(Integer id, boolean cameraVideo, boolean termometro, boolean medidorCO2,
-			boolean medidorMetano, Localizacao localizacao) throws Exception {
-			this.unidade.addUnidadeManhattan(id, cameraVideo, termometro, medidorCO2, medidorMetano, localizacao);
+			boolean medidorMetano, int latitude, int longitude) throws Exception {
+			this.unidade.addUnidadeManhattan(id, cameraVideo, termometro, medidorCO2, medidorMetano, latitude, longitude);
 	}
 	
 	public List<UnidadeMonitoramento> getUnidades() throws Exception {

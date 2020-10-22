@@ -63,11 +63,11 @@ public class UnidadeMonitoramentoSQL implements IUnidadeDAO {
 
 	@Override
 	public void addUnidadeEuclidiana(Integer id, boolean cameraVideo, boolean termometro, boolean medidorCO2,
-			boolean medidorMetano, Localizacao localizacao) throws SQLException {
+			boolean medidorMetano, int latitude, int longitude) throws SQLException {
 			PreparedStatement ps = this.getConnection().prepareStatement(SAVE_DATA);
 			ps.setInt(1, id);
-			ps.setInt(2, localizacao.getLatitude());
-			ps.setInt(3, localizacao.getLongitude());
+			ps.setInt(2, latitude);
+			ps.setInt(3, longitude);
 			ps.setBoolean(4, cameraVideo);
 			ps.setBoolean(5, termometro);
 			ps.setBoolean(6, medidorCO2);
@@ -79,11 +79,11 @@ public class UnidadeMonitoramentoSQL implements IUnidadeDAO {
 
 	@Override
 	public void addUnidadeManhattan(Integer id, boolean cameraVideo, boolean termometro, boolean medidorCO2,
-			boolean medidorMetano, Localizacao localizacao) throws SQLException {
+			boolean medidorMetano, int latitude, int longitude) throws SQLException {
 			PreparedStatement ps = this.getConnection().prepareStatement(SAVE_DATA);
 			ps.setInt(1, id);
-			ps.setInt(2, localizacao.getLatitude());
-			ps.setInt(3, localizacao.getLongitude());
+			ps.setInt(2, latitude);
+			ps.setInt(3, longitude);
 			ps.setBoolean(4, cameraVideo);
 			ps.setBoolean(5, termometro);
 			ps.setBoolean(6, medidorCO2);
@@ -95,7 +95,7 @@ public class UnidadeMonitoramentoSQL implements IUnidadeDAO {
 	}
 
 	@Override
-	public void monitorar(Localizacao posicao, UnidadeMonitoramento unidade) throws SQLException {
+	public void atualizarPosicao(Localizacao posicao, UnidadeMonitoramento unidade) throws SQLException {
 			PreparedStatement ps = this.getConnection().prepareStatement(UPDATE_UNIDADES);
 			ps.setInt(1, posicao.getLatitude());
 			ps.setInt(2, posicao.getLongitude());

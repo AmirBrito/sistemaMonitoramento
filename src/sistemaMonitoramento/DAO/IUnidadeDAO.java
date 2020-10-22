@@ -16,13 +16,13 @@ public interface IUnidadeDAO {
 		
 	//add
 		public void addUnidadeEuclidiana(Integer id, boolean cameraVideo, boolean termometro, boolean medidorCO2,
-				boolean medidorMetano, Localizacao localizacao) throws Exception;
+				boolean medidorMetano, int latitude, int longitude) throws Exception;
 		
 		public void addUnidadeManhattan(Integer id, boolean cameraVideo, boolean termometro, boolean medidorCO2,
-				boolean medidorMetano, Localizacao localizacao) throws Exception;
+				boolean medidorMetano, int latitude, int longitude) throws Exception;
 	//update
 		
-		public void monitorar(Localizacao posicao, UnidadeMonitoramento unidade) throws Exception;
+		public void atualizarPosicao(Localizacao posicao, UnidadeMonitoramento unidade) throws Exception;
 
 
 }

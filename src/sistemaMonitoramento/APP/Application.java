@@ -8,10 +8,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
+import javax.swing.JFrame;
+
 import sistemaMonitoramento.LOGICA.AreaMonitorada;
 import sistemaMonitoramento.LOGICA.UnidadeEuclidiana;
 import sistemaMonitoramento.LOGICA.UnidadeManhattan;
 import sistemaMonitoramento.LOGICA.UnidadeMonitoramento;
+import sistemaMonitoramento.UI.JFrameTelaPrincipal;
 import sistemaMonitoramento.UTILITIES.Localizacao;
 
 
@@ -19,10 +22,17 @@ public class Application {
 
 	public static void main(String[] args) throws Exception {
 		
-		Locale.setDefault(Locale.US);
-		Scanner sc = new Scanner(System.in);
 		
-		//testando code
+		
+		JFrame TelaPrincipal = new JFrameTelaPrincipal();
+		TelaPrincipal.setVisible(true);
+		
+		//Locale.setDefault(Locale.US);
+		//Scanner sc = new Scanner(System.in);
+		
+		/*
+		 * //testando code
+	
 		
 		AreaMonitorada areaMonitorada = new AreaMonitorada(001, "Amazonia");		
 		System.out.println(areaMonitorada.toString());
@@ -40,16 +50,16 @@ public class Application {
 		Localizacao destinoFinal = new Localizacao(15,15);
 	
 		
-		/*areaMonitorada.addUnidadeEuclidiana(1, true, true, true, true, padrao);
+		areaMonitorada.addUnidadeEuclidiana(1, true, true, true, true, padrao);
 		areaMonitorada.addUnidadeEuclidiana(2, true, true, true, true, novoLocal);
 		areaMonitorada.addUnidadeManhattan(3, true, true, true, true, novoLocal2);
-		areaMonitorada.addUnidadeManhattan(4, true, true, true, true, novoLocal3);*/
+		areaMonitorada.addUnidadeManhattan(4, true, true, true, true, novoLocal3);
 			
-		areaMonitorada.validarUnidades(destinoFinal, true, true, true, true);		
+		areaMonitorada.monitorar(destinoFinal.getLatitude(), destinoFinal.getLongitude(), true, true, true, true);		
 		System.out.println(areaMonitorada.getUnidades().get(1).getLocalizacao());
 		
 		Localizacao destinoFinal2 = new Localizacao(0,0);		
-		areaMonitorada.validarUnidades(destinoFinal2, true, true, true, true);				
+		areaMonitorada.monitorar(destinoFinal2.getLatitude(), destinoFinal2.getLongitude(), true, true, true, true);				
 		System.out.println(areaMonitorada.getUnidades().get(1).getLocalizacao());
 		
 		for (UnidadeMonitoramento id : areaMonitorada.getUnidades()) { 
@@ -59,7 +69,7 @@ public class Application {
 		sc.close();
 
 		
-		/*		
+			
 			DriverManager.registerDriver(new org.h2.Driver());
 			Connection con = DriverManager.getConnection("jdbc:h2:~/dataMonitoramento");
 			
